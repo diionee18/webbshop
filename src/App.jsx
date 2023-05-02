@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+// import { useState } from 'react'
+import "./App.css";
+import { uploadProduct } from "./components/uploadProducts";
 
 function App() {
+ 
+   uploadProduct()
 
 
-  return (
-    <>
-      
-    </>
-  )
+    return <>
+    hej</>;
 }
 
-export default App
+export default App;
