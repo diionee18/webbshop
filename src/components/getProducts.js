@@ -16,7 +16,7 @@
         }
         return null;
     }
-
+    getProducts()
     export {getProducts}
     //Här hämtar vi datan, jag tänker att vi kan använda oss av en tom array som har t.ex 
     // namn, pris, info och img från en recoil och sedan pushar jag in data från data som finns här.
