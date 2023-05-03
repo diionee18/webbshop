@@ -1,10 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import { RouterProvider } from "react-router-dom";
 import './index.css'
+import { RecoilRoot } from "recoil";
+import { router } from './routeConfig';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RecoilRoot>
+    <RouterProvider router={router}/>
+    </RecoilRoot>
   </React.StrictMode>,
 )

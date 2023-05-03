@@ -1,7 +1,5 @@
-    // URL: https://www.forverkliga.se/JavaScript/api/fe/?action=get-products&shopid=id
 
-    // Get all products
-    
+
     async function getProducts() {
         const url = "https://www.forverkliga.se/JavaScript/api/fe/";
         const shopId = 1002;
