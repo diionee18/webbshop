@@ -12,6 +12,7 @@
     align-items: center;
     background: rgb(208,223,37);
     background: linear-gradient(128deg, rgb(208, 227, 0) 0%, rgb(68, 146, 80) 100%);
+    position: relative;
 }
 
 .logo-div{
@@ -29,9 +30,66 @@ h4{
     color:rgb(48, 133, 61);
 }
 
-.val{
-    visibility: hidden;
+/*Nav mobile börjar här*/
+.val-off{
+    display: none;
+    position: none;
 }
+.val{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    position: absolute;
+    right: 0em;
+    top: 6.5em;
+    background: rgb(208,223,37);
+    background: linear-gradient(128deg, rgb(155, 169, 6) 0%, rgb(68, 146, 80) 100%);
+    padding: 5em 2em;
+    z-index: 2;
+    
+    
+}
+nav{
+    color: black;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a{
+    color: white;
+    font-weight: bold;
+    text-decoration-line: none;
+    
+}
+.input{
+    border-radius: 2px;
+    border: none;
+    padding: .4em;
+    margin: 0em 3em;
+    width: 65%;
+    align-self: center;
+}
+
+.searchbar{
+    position: absolute;
+    top: 9.6em;
+    left: 3.5em;
+    z-index: 1;
+}
+
+hr{
+    border: 2px solid white;
+    width: 100%;
+}
+
+.login{
+    align-self: center;
+    width: 50px;
+    height: 50px;
+}
+/*Nav mobile slutar här*/
 
 .right{
     display: flex;
