@@ -36,7 +36,7 @@ select{
     padding: .5em;
     top: 3em;
     color: #f0f992;
-    z-index: -;
+    font-weight: bold;
 }
 
 @media screen and (min-width: 580px) {
@@ -45,10 +45,15 @@ select{
         height: 50vh;
     }
     .paragraf-bg{   
-        font-size: 35px;
-        padding: 2% 3%;
-        top: 4.5em;
+        font-size: 40px;
+        padding: 1.5% 3%;
+        top: 5em;
 
     }
+    select{
+        font-size: 20px;
+    }
+
+
 
 }

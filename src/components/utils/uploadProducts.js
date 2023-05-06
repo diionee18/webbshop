@@ -6,11 +6,11 @@ async function uploadProduct() {
 	
     const data = {
 		action: 'add-product',
-		name: 'Water pistol',
-		description: 'Fires cooling streams of water at unsuspecting foes.',
-		picture: 'insert web URL here',
+		name: 'rally',
+		description: 'A car ',
+		picture: 'https://cdn.shopify.com/s/files/1/0334/4036/6725/files/iStock-1270389581_1_2000x1334_crop_center.jpg?v=1671722815',
         price: 12,
-		shopid: shopId
+		shopid: shopId,
 	}
 	const options = {
 		method: 'POST',
