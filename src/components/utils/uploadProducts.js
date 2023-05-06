@@ -1,8 +1,10 @@
 // Function that returns true if posting was successful
 async function uploadProduct() {
+    
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=add-product";
     const shopId = 1002;
-	const data = {
+	
+    const data = {
 		action: 'add-product',
 		name: 'Water pistol',
 		description: 'Fires cooling streams of water at unsuspecting foes.',
