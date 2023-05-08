@@ -1,6 +1,7 @@
-import { products } from "./getAtom";
+import { products } from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
+import "./getproduct.css"
 
 async function getProducts() {
     const url = "https://www.forverkliga.se/JavaScript/api/fe/";
@@ -32,14 +33,17 @@ function YourComponent() {
     }, [setProductsState]);
 
     return (
-        <div>
+        <div className="product-wrapper">
             {productsState.map((product) => (
-                <div key={product.id}>
+                <div className="product-div" key={product.id}>
                     <li>
-                        {product.name}
-                        {product.price}
-                        {product.description}
                         {product.picture}
+                        <br />
+                        {product.name}
+                        <br />
+                        {product.price}
+                        <br />
+                        {product.description}
                     </li>
                 </div>
             ))}

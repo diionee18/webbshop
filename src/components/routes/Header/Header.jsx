@@ -8,7 +8,7 @@ import { useState } from "react";
 // import { FontAwesomeIcon  } from "@fortawesome/react-fontawesome";
 // import {  faMagnifyingGlass  } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
-    const [isOpen, setOpen] = useState(true);
+    const [isOpen, setOpen] = useState(false);
     console.log(isOpen);
     return (
         <>

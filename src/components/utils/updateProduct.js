@@ -1,16 +1,16 @@
 async function updateProduct() {
     
-    const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=?action=edit-product";
+    const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=edit-product";
     const shopId = 1002;
 	
     const data = {
 		action: 'edit-product',
-		name: 'alltid roligt',
-		description: 'senast',
-		picture: 'postit',
+		name: 'powerrage',
+		description: 'ett test',
+		picture: 'normal',
         price: 12,
 		shopid: shopId,
-        id: 286
+        id: 36
 	}
 	const options = {
 		method: 'PUT',
@@ -19,7 +19,7 @@ async function updateProduct() {
 	}
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
-    console.log(data);
+    console.log(statusObject);
 
 	if( statusObject.stats === 'success' ) {
 		return true

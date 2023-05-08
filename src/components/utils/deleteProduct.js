@@ -4,7 +4,7 @@ async function deleteProduct(){
     
     const data = {
         shopid: shopId,
-        id: 1605,
+        productid: 36,
     }
 	
     const options ={
@@ -15,7 +15,7 @@ async function deleteProduct(){
     const response = await fetch(url, options)
     const statusObject = await response.json()
     console.log(response);
-    if (statusObject.stats === "success"){
+    if (statusObject.status === "success"){
         return true
     }
     return false
