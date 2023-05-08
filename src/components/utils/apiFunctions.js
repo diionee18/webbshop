@@ -1,6 +1,5 @@
 
 
-
 export async function getUsers() {
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=get-users&shopid=1002";
     try {
@@ -79,19 +78,19 @@ export async function getProducts() {
 
 
 
-export async function updateProduct() {
+export async function updateProduct(productName,productPrice,productInfo,productImg, productId) {
     
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=edit-product";
     const shopId = 1002;
 	
     const data = {
 		action: 'edit-product',
-		name: 'VattenPistol Razer Force - Blå',
-		description: 'Varje tryck på avtryckaren släpper ut en kraftfull individuell vattenstöt med oöverträffad precision.',
-		picture: 'https://m.media-amazon.com/images/I/61U3ct-xXzL.jpg',
-        price: 299,
+		name: productName,
+		description: productInfo,
+		picture: productImg,
+        price: productPrice,
 		shopid: shopId,
-        productid: 286
+        productid: productId
 	}
 	const options = {
 		method: 'PUT',

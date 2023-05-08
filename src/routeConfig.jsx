@@ -4,6 +4,7 @@ import { createHashRouter} from 'react-router-dom'
 import Products from "./components/routes/products/Products";
 import Users from "./components/Admin/Users";
 import ProductsAdmin from "./components/Admin/ProductsAdmin";
+import EditProduct from "./components/Admin/EditProduct";
 
 
 
@@ -40,6 +41,10 @@ export const router = createHashRouter([
             {
                 path: '/admin/users',
                 element: <Users/>
+            },
+            {
+                path: '/admin/products/edit',
+                element: <EditProduct/>
             },
             
         ]

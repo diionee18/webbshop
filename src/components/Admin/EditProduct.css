@@ -1,0 +1,40 @@
+.div-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+
+.input-wrapper{
+    color: white;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1em;
+    background: rgb(16,14,15);
+    background: linear-gradient(90deg, rgba(16,14,15,1) 0%, rgba(80,49,56,1) 50%, rgba(80,49,56,1) 100%);
+    margin: 1em;
+    padding: 2em;
+}
+
+.label-div{
+    display: flex;
+    flex-direction: column;
+}
+
+label, input {
+font-size: 24px;
+}
+
+.uppdatera-btn{
+    color: white;
+    font-size: 22px;
+    padding: .5em 1em;
+    border: 2px solid rgb(158, 110, 21);
+    background: rgb(63, 30, 47);
+    cursor: pointer;
+}
+
+
