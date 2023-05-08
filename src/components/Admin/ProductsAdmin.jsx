@@ -18,7 +18,17 @@ function ProductsAdmin() {
 
         fetchData();
     }, [setProductsState]);
+    
+    const Uppdateraprodukt = (e) =>{
+        
+        return(
+            <div>
+                
+                <input type="text" name="" id="" />
+            </div>
+        )
 
+    }
     return (
         <div className="product-wrapper">
             {productsState.map((product) => (
