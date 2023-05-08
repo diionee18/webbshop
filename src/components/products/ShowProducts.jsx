@@ -1,31 +1,19 @@
-import { products } from "../../utils/getAtom";
+import { products} from "../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import "./getproduct.css"
+import { getProducts } from "../utils/apiFunctions.js";
 
-async function getProducts() {
-    const url = "https://www.forverkliga.se/JavaScript/api/fe/";
-    const shopId = 1002;
-    let urlWithQuery = url + "?action=get-products&shopid=" + shopId;
-    try {
-        const response = await fetch(urlWithQuery);
-        const data = await response.json();
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.log("Use console.log to find out what the error is.");
-    }
-    return null;
-}
 
-function YourComponent() {
+function ShowProducts() {
     const [productsState, setProductsState] = useRecoilState(products);
+
 
     useEffect(() => {
         async function fetchData() {
             const data = await getProducts();
             if (data) {
-                setProductsState(data); 
+                setProductsState(data);
             }
         }
 
@@ -37,11 +25,11 @@ function YourComponent() {
             {productsState.map((product) => (
                 <div className="product-div" key={product.id}>
                     <li>
-                        {product.picture}
+                        {<img src={product.picture} alt="" /> }
                         <br />
-                        {product.name}
+                        {product.name }
                         <br />
-                        {product.price}
+                        {product.price} Kr
                         <br />
                         {product.description}
                     </li>
@@ -51,8 +39,8 @@ function YourComponent() {
     );
 }
 
-export default YourComponent;
+export default ShowProducts;
 
-getProducts();
-export { getProducts };
+
+
 

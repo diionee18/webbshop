@@ -190,6 +190,11 @@ hr{
         width: 25px;
         height: 40px;
     }
+    .login-btn{
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
     
     
    

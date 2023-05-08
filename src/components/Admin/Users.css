@@ -1,0 +1,25 @@
+
+.users-Wrapper{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+    background: rgb(16,14,15);
+    background: linear-gradient(90deg, rgba(16,14,15,1) 0%, rgba(80,49,56,1) 50%, rgba(80,49,56,1) 100%);
+    color: white;
+    margin: 1em 10em;
+}
+.users-div{
+    align-self: center;
+    padding: 5em;
+    list-style: none;
+    border: 2px solid black;
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    margin: 2em;
+    font-size: 24px;
+}
