@@ -8,9 +8,13 @@ const users = atom({
     key: 'users',
     default:[],
 })
+const clicked = atom({
+    key: 'clicked',
+    default:false,
+})
 const logdin = atom({
     key: 'logdin',
-    default:true,
+    default:false,
 })
 
-export {products, users, logdin} 
+export {products, users, logdin, clicked} 

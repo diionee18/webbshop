@@ -4,15 +4,22 @@ import logo from "../../assets/Logo.png";
 import varukorg from "../../assets/varukorg.png";
 import login from "../../assets/login.png";
 import { Fade, Fade as Hamburger } from "hamburger-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Login from "../login/Login";
+import { useRecoilState } from "recoil";
+import { clicked } from "../utils/getAtom";
 // import { FontAwesomeIcon  } from "@fortawesome/react-fontawesome";
 // import {  faMagnifyingGlass  } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
     const [isOpen, setOpen] = useState(false);
+    const [isClicked, setClicked] = useRecoilState(clicked);
     console.log(isOpen);
+
+
     const handleclick = () => {
-        console.log("hejjjjj");
+        setClicked(true);
     }
+ 
     return (
         <>
             <div className="nav-wrapper-mobile">
@@ -82,6 +89,11 @@ const Header = () => {
                     <button onClick={handleclick} className="login-btn"> <img className="login-desktop" src={login} alt="" /> </button>
                 </div>
             </div>
+            {isClicked? 
+            <Login/>:
+            null
+            
+        }
         </>
     );
 };

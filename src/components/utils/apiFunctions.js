@@ -87,7 +87,7 @@ export async function updateProduct(productName,productPrice,productInfo,product
 		action: 'edit-product',
 		name: productName,
 		description: productInfo,
-		picture: productImg,
+		picture: `'${productImg}'`,
         price: productPrice,
 		shopid: shopId,
         productid: productId
@@ -99,6 +99,7 @@ export async function updateProduct(productName,productPrice,productInfo,product
 	}
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
+    console.log(statusObject);
    
 
 	if( statusObject.stats === 'success' ) {
