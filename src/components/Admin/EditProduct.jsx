@@ -22,13 +22,13 @@ const EditProduct = () => {
 
 
     const handleName = (e) => {
-        setProductName(`"${e.target.value}"`);
+        setProductName(e.target.value);
     };
     const handlePrice = (e) => {
         setProductPrice(e.target.value);
     };
     const handleInfo = (e) => {
-        setProductInfo(`"${e.target.value}"`);
+        setProductInfo(e.target.value);
     };
     const handleImg = (e) => {
         setProductImg(e.target.value);

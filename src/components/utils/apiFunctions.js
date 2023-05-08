@@ -87,7 +87,7 @@ export async function updateProduct(productName,productPrice,productInfo,product
 		action: 'edit-product',
 		name: productName,
 		description: productInfo,
-		picture: `'${productImg}'`,
+		picture: productImg,
         price: productPrice,
 		shopid: shopId,
         productid: productId
