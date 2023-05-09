@@ -1,21 +1,45 @@
+.khara{
+    display: grid;
+    justify-content: center;
+}
 .product-wrapper{
     margin-top: 1em;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 3em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+    gap: 5em;
+    align-self: center;
+
 }
 
 .product-div{
     font-size: 24px;
     text-align: start;
-    width: 600px;
-    border: 2px solid black;
-    padding: 4em 1em;
+    width: 250px;
+    border: 2px solid rgba(70, 173, 95, 0.327);
+    padding: 2em 1em;
     list-style-type: none;
     color: #515151;
 }
 
 img{
     width: 100%;
+}
+
+.go-to-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.go-to-btn button{
+    font-size: 18px;
+    color: white;
+    margin-top: 1em;
+    padding: .6em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(128deg, rgb(99, 107, 17) 0%, rgb(68, 146, 80) 100%);
 }

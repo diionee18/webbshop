@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { useEffect} from "react";
 import { getProducts } from "../../utils/apiFunctions.js";
 import { NavLink } from "react-router-dom";
+import "./ProductsAdmin.css"
 
 
 function ProductsAdmin() {
@@ -22,20 +23,27 @@ function ProductsAdmin() {
 
     return (
         <div className="product-wrapper">
+            <div>
+            <button className="admin-button"><NavLink to={'/admin/products/add-product'}>Lägg till produkt</NavLink></button>
+
+            </div>
             {productsState.map((product) => (
                 <div className="product-div" key={product.id}>
                     <li>
                         {<img src={product.picture} alt="" /> }
                         <br />
-                        {product.name }
+                        Produkt: {product.name }
                         <br />
-                        {product.price} Kr
+                        Pris: {product.price} Kr
                         <br />
-                        {product.description}
+                        Info: {product.description}
                         <br />
-                        {product.id}
+                        Produkt id: {product.id}
                         <br />
-                        <button className="update-product-btn"><NavLink to={'/admin/products/edit'}>Uppdatera Produkt</NavLink></button>
+                        <div className="admin-btn-div">
+                        <button className="admin-button"><NavLink to={'/admin/products/edit'}>Uppdatera Produkt</NavLink></button>
+                        <button className="admin-button"><NavLink>Ta bort</NavLink></button>
+                        </div>
                     </li>
                 </div>
             ))}
