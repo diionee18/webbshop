@@ -1,12 +1,4 @@
 import { useState, useEffect } from "react";
-import {
-    name,
-    price,
-    description,
-    picture,
-    productid,
-} from "../utils/updateProductAtom.js";
-import { useRecoilState } from "recoil";
 import "./EditProduct.css";
 import { updateProduct, getProducts } from "../utils/apiFunctions.js";
 
