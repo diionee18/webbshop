@@ -5,6 +5,7 @@ import Products from "./components/routes/products/Products";
 import Users from "./components/Admin/Users";
 import ProductsAdmin from "./components/Admin/ProductsAdmin";
 import EditProduct from "./components/Admin/EditProduct";
+import AddProduct from "./components/Admin/AddProduct";
 
 
 
@@ -45,6 +46,10 @@ export const router = createHashRouter([
             {
                 path: '/admin/products/edit',
                 element: <EditProduct/>
+            },
+            {
+                path: '/admin/products/add-product',
+                element: <AddProduct/>
             },
             
         ]

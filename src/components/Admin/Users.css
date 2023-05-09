@@ -23,3 +23,17 @@
     margin: 2em;
     font-size: 24px;
 }
+
+.admin-button{
+    cursor: pointer;
+    padding: .4em;
+    border: 2px solid rgb(93, 66, 15);
+    font-size: 22px;
+    color:  white;
+    background: rgb(16,14,15);
+    background: linear-gradient(90deg, rgb(71, 48, 59) 0%, rgba(80,49,56,1) 50%, rgba(80,49,56,1) 100%);
+}
+
+.users-Wrapper button{
+    margin-top: .5em;
+}

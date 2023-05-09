@@ -14,7 +14,7 @@ const clicked = atom({
 })
 const logdin = atom({
     key: 'logdin',
-    default:true,
+    default:false,
 })
 
 export {products, users, logdin, clicked} 

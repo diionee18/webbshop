@@ -1,10 +1,16 @@
 import logo from "../../assets/Logo.png";
 import { NavLink } from "react-router-dom";
 import "./HeaderAdmin.css"
+import { logdin } from "../utils/getAtom";
+import { useRecoilState } from "recoil";
 import Users from "./Users";
 
 
 const HeaderAdmin = () => {
+    const [isLogdin, setLogdin] = useRecoilState(logdin);
+    const logOut = () =>{
+        setLogdin(false)
+    }
     return (
         <>
             <div className="nav-wrapper-admin">
@@ -21,7 +27,7 @@ const HeaderAdmin = () => {
                 </div>
 
                 <div>
-                    <button>Logga ut</button>
+                    <button className="admin-button" onClick={logOut}>Logga ut</button>
                 </div>
             </div>
         </>

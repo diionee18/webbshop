@@ -25,7 +25,7 @@ const Users = () => {
                 {userstate.map((user) =>(
                     <li><span>Användarnamn: </span>{user.username} <br />
                    <span> AnvändarId: </span> {user.id} <br />
-                   <button>Ta bort</button>
+                   <button className="admin-button">Ta bort</button>
                     </li>
                 ))}
                 </div>

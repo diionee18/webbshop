@@ -5,11 +5,15 @@ export async function getUsers() {
     try {
         const response = await fetch(url);
         const data = await response.json();
-       
+        
+        
+    
         return data;
+      
     } catch (error) {
         console.log("Use console.log to find out what the error is.");
     }
+   
     return null;
 }
 
@@ -109,17 +113,17 @@ export async function updateProduct(productName,productPrice,productInfo,product
 }
 
 
-export async function uploadProduct() {
+export async function uploadProduct(productName, productPrice, productInfo, productImg) {
     
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=add-product";
     const shopId = 1002;
 	
     const data = {
 		action: 'add-product',
-		name: 'rally',
-		description: 'A car ',
-		picture: 'https://cdn.shopify.com/s/files/1/0334/4036/6725/files/iStock-1270389581_1_2000x1334_crop_center.jpg?v=1671722815',
-        price: 12,
+		name: productName,
+		description: productInfo,
+		picture: productImg,
+        price: productPrice,
 		shopid: shopId,
 	}
 	const options = {

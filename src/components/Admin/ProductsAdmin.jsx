@@ -21,6 +21,7 @@ function ProductsAdmin() {
 
     return (
         <>
+       <button> <NavLink to={"/admin/products/add-product"}> Lägg till produkt</NavLink></button>
             <div className="product-wrapper">
                 {productsState.map((product) => (
                     <div className="product-div" key={product.id}>
