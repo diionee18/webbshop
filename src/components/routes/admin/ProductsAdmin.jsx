@@ -1,11 +1,11 @@
-import { products} from "../utils/getAtom";
+import { products} from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect} from "react";
-import "./getproduct.css"
-import { getProducts } from "../utils/apiFunctions.js";
+import { getProducts } from "../../utils/apiFunctions.js";
+import { NavLink } from "react-router-dom";
 
 
-function ShowProducts() {
+function ProductsAdmin() {
     const [productsState, setProductsState] = useRecoilState(products);
 
 
@@ -32,6 +32,10 @@ function ShowProducts() {
                         {product.price} Kr
                         <br />
                         {product.description}
+                        <br />
+                        {product.id}
+                        <br />
+                        <button className="update-product-btn"><NavLink to={'/admin/products/edit'}>Uppdatera Produkt</NavLink></button>
                     </li>
                 </div>
             ))}
@@ -39,8 +43,4 @@ function ShowProducts() {
     );
 }
 
-export default ShowProducts;
-
-
-
-
+export default ProductsAdmin;

@@ -11,6 +11,7 @@ const Login = () => {
     const [inputUserName, setInputUserName] = useState("")
     const [isClicked, setClicked] = useRecoilState(clicked);
     const [isLogdin, setLogdin] = useRecoilState(logdin);
+    
     useEffect(() => {
         async function fetchUsers() {
             const data = await getUsers();
@@ -28,12 +29,14 @@ const Login = () => {
 
     const isUserName = (e) => {
        setInputUserName(e.target.value)
+       console.log(inputUserName);
     }
     
-    const correctCredentials = () => {
+    const correctCredentials = (e) => {
         userstate.forEach(user =>{
             if (user.username === inputUserName){
                 setLogdin(true)
+                e.preventDefault()
                 return;
             }else if (user.username.toLowerCase() != inputUserName.toLowerCase()) {
 
