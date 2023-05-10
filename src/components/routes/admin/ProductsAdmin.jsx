@@ -1,13 +1,22 @@
 import { products} from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect} from "react";
-import { getProducts } from "../../utils/apiFunctions.js";
+import { getProducts, deleteProduct } from "../../utils/apiFunctions.js";
 import { NavLink } from "react-router-dom";
 import "./ProductsAdmin.css"
 
 
 function ProductsAdmin() {
     const [productsState, setProductsState] = useRecoilState(products);
+
+    const removeProduct = async (productId) =>{
+        const result = await deleteProduct(productId); 
+        if (result){
+            console.log("Produkt är borttagen: " + productId);
+        }else{
+            console.log(result);
+        }
+    }
 
 
     useEffect(() => {
@@ -41,8 +50,8 @@ function ProductsAdmin() {
                         Produkt id: {product.id}
                         <br />
                         <div className="admin-btn-div">
-                        <button className="admin-button"><NavLink to={'/admin/products/edit'}>Uppdatera Produkt</NavLink></button>
-                        <button className="admin-button"><NavLink>Ta bort</NavLink></button>
+                         <NavLink className="admin-button" to={'/admin/products/edit'}>Uppdatera Produkt</NavLink>
+                        <button onClick={() => removeProduct(product.id)} className="admin-button">Ta bort</button>
                         </div>
                     </li>
                 </div>
