@@ -7,6 +7,20 @@ import { getProducts } from "../utils/apiFunctions.js";
 function ShowProducts() {
     const [productsState, setProductsState] = useRecoilState(products);
 
+    const sommarLeksakerNamn = [
+        "Vattenpistol",
+        "Badmintonset",
+        "Strandboll",
+        "Frisbee",
+        "Vattenspridare",
+        "Sandlåda med leksaker",
+        "Badring",
+        "Bubbelpistoler",
+        "Kubb",
+        "Hopprep",
+        "Återanvändbara Vattenbomber"
+      ];
+
     useEffect(() => {
         async function fetchData() {
             const data = await getProducts();
@@ -19,21 +33,23 @@ function ShowProducts() {
     }, [setProductsState]);
 
     return (
-        <div className="parent">
+
         <div className="product-wrapper">
-            {productsState.map((product) => (
+            {productsState.filter((product) => sommarLeksakerNamn.includes(product.name)).map((product) => (
                 <div className="product-div" key={product.id}>
-                    <li>
-                        <div>{<img src={product.picture} alt="" />}</div>
+                    <li className="product-li">
+                        <div >
+
+                        <div className="img-div">{<img src={product.picture} alt="" />}</div>
                         <div>{product.name}</div>
                         <div>{product.price} Kr</div>
+                        </div>
+                    </li>
                         <div className="go-to-btn">
                             <button>Gå till Produkt</button>
                         </div>
-                    </li>
                 </div>
             ))}
-        </div>
         </div>
     );
 }
