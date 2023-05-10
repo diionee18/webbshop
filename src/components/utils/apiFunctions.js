@@ -42,13 +42,13 @@ export async function addUser() {
 	return false 
 }
 
-export async function deleteProduct(productId){
+export async function deleteProduct(){
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=delete-product";
    const shopId = 1002;
    
    const data = {
        shopid: shopId,
-       productid: productId,
+       productid: 8314,
    }
    
    const options ={
@@ -57,7 +57,7 @@ export async function deleteProduct(productId){
     //    headers: {'Content-Type': 'application/json', "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"},
        body: JSON.stringify(data)
    }
-   console.log("Delete Product", url, productId);
+   console.log("Delete Product", url);
    const response = await fetch(url, options)
    const statusObject = await response.json()
  
@@ -134,6 +134,7 @@ export async function uploadProduct(productName, productPrice, productInfo, prod
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
 	}
+    console.log(productImg);
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
    

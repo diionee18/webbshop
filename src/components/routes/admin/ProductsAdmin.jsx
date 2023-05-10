@@ -1,23 +1,21 @@
-import { products} from "../../utils/getAtom";
+import { products } from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { getProducts, deleteProduct } from "../../utils/apiFunctions.js";
 import { NavLink } from "react-router-dom";
-import "./ProductsAdmin.css"
-
+import "./ProductsAdmin.css";
 
 function ProductsAdmin() {
     const [productsState, setProductsState] = useRecoilState(products);
 
-    const removeProduct = async (productId) =>{
-        const result = await deleteProduct(productId); 
-        if (result){
+    const removeProduct = async (productId) => {
+        const result = await deleteProduct(productId);
+        if (result) {
             console.log("Produkt är borttagen: " + productId);
-        }else{
+        } else {
             console.log(result);
         }
-    }
-
+    };
 
     useEffect(() => {
         async function fetchData() {
@@ -31,32 +29,58 @@ function ProductsAdmin() {
     }, [setProductsState]);
 
     return (
-        <div className="product-wrapper">
-            <div>
-            <button className="admin-button"><NavLink to={'/admin/products/add-product'}>Lägg till produkt</NavLink></button>
-
+        <>
+            <div className="add-prod-btn-div">
+                <NavLink
+                    className="add-btn btn"
+                    to={"/admin/products/add-product"}
+                >
+                    Lägg till produkt
+                </NavLink>
             </div>
-            {productsState.map((product) => (
-                <div className="product-div" key={product.id}>
-                    <li>
-                        {<img src={product.picture} alt="" /> }
-                        <br />
-                        Produkt: {product.name }
-                        <br />
-                        Pris: {product.price} Kr
-                        <br />
-                        Info: {product.description}
-                        <br />
-                        Produkt id: {product.id}
-                        <br />
-                        <div className="admin-btn-div">
-                         <NavLink className="admin-button" to={'/admin/products/edit'}>Uppdatera Produkt</NavLink>
-                        <button onClick={() => removeProduct(product.id)} className="admin-button">Ta bort</button>
+
+                <div className="product-wrapper-admin">
+                    {productsState.map((product) => (
+                        <div className="product-div-admin" key={product.id}>
+                            <li>
+                                <div className="img-div">
+
+                                {<img src={product.picture} alt="" />}
+                                </div>
+                                <br />
+                                <div>
+                                    <span className="span-admin">
+                                        Produkt:{" "}
+                                    </span>{" "}
+                                    {product.name}
+                                </div>
+                                <div>
+                                    <span className="span-admin">Pris: </span>
+                                    {product.price} Kr
+                                </div>
+                                <div>
+                                    <span className="span-admin">Info </span>:{" "}
+                                    {product.description}
+                                </div>
+                                <div>
+                                    <span className="span-admin">
+                                        Produkt id:{" "}
+                                    </span>{" "}
+                                    {product.id}
+                                </div>
+
+                                    <div className="edit-remove-div">
+                                    <NavLink  className="edit-button btn" to={"/admin/products/edit"}> Ändra</NavLink>
+                                    <button onClick={() => removeProduct(product.id)} className="remove-button btn">
+                                        Ta bort </button>
+                                        </div>
+
+                            </li>
                         </div>
-                    </li>
+                    ))}
                 </div>
-            ))}
-        </div>
+
+        </>
     );
 }
 

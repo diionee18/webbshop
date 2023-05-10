@@ -19,7 +19,7 @@ function ShowProducts() {
     }, [setProductsState]);
 
     return (
-        <div className="khara">
+        <div className="parent">
         <div className="product-wrapper">
             {productsState.map((product) => (
                 <div className="product-div" key={product.id}>

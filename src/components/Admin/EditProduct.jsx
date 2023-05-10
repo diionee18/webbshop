@@ -35,7 +35,6 @@ const EditProduct = () => {
             console.log("allt gick bra");
         } else{
             setErrorEdit(true)
-            console.log("något gick fel", result, errorEdit);
           
         }
         

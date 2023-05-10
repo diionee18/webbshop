@@ -24,7 +24,7 @@
     font-size: 24px;
 }
 
-.admin-button{
+.btn{
     cursor: pointer;
     padding: .4em;
     border: 2px solid rgb(93, 66, 15);

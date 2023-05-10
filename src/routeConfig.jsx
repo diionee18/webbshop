@@ -32,23 +32,23 @@ export const router = createHashRouter([
                 element: <Home/>
             },
             {
-                path: '/admin',
+                path: 'admin',
                 element: <Home/>
             },
             {
-                path: '/admin/products',
+                path: 'admin/products',
                 element: <ProductsAdmin/>
             },
             {
-                path: '/admin/users',
+                path: 'admin/users',
                 element: <Users/>
             },
             {
-                path: '/admin/products/edit',
+                path: 'admin/products/edit',
                 element: <EditProduct/>
             },
             {
-                path: '/admin/products/add-product',
+                path: 'admin/products/add-product',
                 element: <AddProduct/>
             },
             

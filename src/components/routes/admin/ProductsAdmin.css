@@ -1,9 +1,65 @@
-.admin-btn-div{
-    margin-top: 1em;
-    display: flex;
-    gap: 2em;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.admin-button{
-    cursor: pointer;
+
+.add-prod-btn-div{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+
+.product-wrapper-admin{
+    width: 100%;
+    padding: 0em 4em;
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr ));
+    margin-bottom: 2em;
+    gap: 6em;
+    
+}
+
+.product-div-admin{
+    justify-self: center;
+    font-size: 24px;
+    text-align: start;
+    width: 300px;
+    border: 2px solid rgba(105, 61, 23, 0.327);
+    padding: 2em 1em;
+    list-style-type: none;
+    color: #515151;
+}
+.img-div{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    align-self: center;
+    width: 50%;
+}
+
+.span-admin{
+    color: #b81616;
+}
+
+.edit-remove-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+.edit-button{
+    font-size: 20px;
+    margin-right: 1em;
+    border-radius: 5px;
+    padding: .45em;
+}
+.remove-button {
+    border-radius: 5px;
+    font-size: 20px;
+   
 }
