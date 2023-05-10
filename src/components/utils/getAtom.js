@@ -16,5 +16,9 @@ const logdin = atom({
     key: 'logdin',
     default:false,
 })
+const idValue = atom({
+    key: 'idValue',
+    default:'',
+})
 
-export {products, users, logdin, clicked} 
+export {products, users, logdin, clicked, idValue} 

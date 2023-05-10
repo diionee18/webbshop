@@ -36,5 +36,14 @@ font-size: 24px;
     background: rgb(63, 30, 47);
     cursor: pointer;
 }
+input::placeholder{
+    color: rgb(192, 66, 66);
+}
+
+.submit-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
 
 

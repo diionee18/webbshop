@@ -1,0 +1,16 @@
+.product-added{
+    top: 10em;
+    padding: 10em;
+    color: white;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgba(16,14,15,1) 0%, rgba(80,49,56,1) 50%, rgba(80,49,56,1) 100%);
+}
+
+.to-btn{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}

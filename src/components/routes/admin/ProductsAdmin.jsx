@@ -1,12 +1,14 @@
-import { products } from "../../utils/getAtom";
+import { products, idValue } from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { getProducts, deleteProduct } from "../../utils/apiFunctions.js";
 import { NavLink } from "react-router-dom";
 import "./ProductsAdmin.css";
 
+
 function ProductsAdmin() {
     const [productsState, setProductsState] = useRecoilState(products);
+    const [targetId, setTargetId] = useRecoilState(idValue);
 
     const removeProduct = async (productId) => {
         const result = await deleteProduct(productId);
@@ -16,6 +18,7 @@ function ProductsAdmin() {
             console.log(result);
         }
     };
+    
 
     useEffect(() => {
         async function fetchData() {
@@ -39,47 +42,51 @@ function ProductsAdmin() {
                 </NavLink>
             </div>
 
-                <div className="product-wrapper-admin">
-                    {productsState.map((product) => (
-                        <div className="product-div-admin" key={product.id}>
-                            <li>
-                                <div className="img-div">
-
+            <div className="product-wrapper-admin">
+                {productsState.map((product) => (
+                    <div className="product-div-admin" key={product.id}>
+                        <li>
+                            <div className="img-div">
                                 {<img src={product.picture} alt="" />}
-                                </div>
-                                <br />
-                                <div>
-                                    <span className="span-admin">
-                                        Produkt:{" "}
-                                    </span>{" "}
-                                    {product.name}
-                                </div>
-                                <div>
-                                    <span className="span-admin">Pris: </span>
-                                    {product.price} Kr
-                                </div>
-                                <div>
-                                    <span className="span-admin">Info </span>:{" "}
-                                    {product.description}
-                                </div>
-                                <div>
-                                    <span className="span-admin">
-                                        Produkt id:{" "}
-                                    </span>{" "}
-                                    {product.id}
-                                </div>
+                            </div>
+                            <br />
+                            <div>
+                                <span className="span-admin">Produkt: </span>{" "}
+                                {product.name}
+                            </div>
+                            <div>
+                                <span className="span-admin">Pris: </span>
+                                {product.price} Kr
+                            </div>
+                            <div>
+                                <span className="span-admin">Info </span>:{" "}
+                                {product.description}
+                            </div>
+                            <div>
+                                <span className="span-admin">Produkt id: </span>{" "}
+                                {product.id}
+                            </div>
 
-                                    <div className="edit-remove-div">
-                                    <NavLink  className="edit-button btn" to={"/admin/products/edit"}> Ändra</NavLink>
-                                    <button onClick={() => removeProduct(product.id)} className="remove-button btn">
-                                        Ta bort </button>
-                                        </div>
+                            <div className="edit-remove-div">
+                                <NavLink
+                                    onClick={() => setTargetId(product.id)}
+                                    className="edit-button btn"
+                                    to={"/admin/products/edit"}
+                                >
+                                    {" "}
+                                    Ändra
+                                </NavLink>
+                                <button
 
-                            </li>
-                        </div>
-                    ))}
-                </div>
-
+                                    className="remove-button btn"
+                                >
+                                    Ta bort{" "}
+                                </button>
+                            </div>
+                        </li>
+                    </div>
+                ))}
+            </div>
         </>
     );
 }

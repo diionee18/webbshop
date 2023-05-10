@@ -48,7 +48,7 @@ export async function deleteProduct(){
    
    const data = {
        shopid: shopId,
-       productid: 8314,
+       productid: 8835,
    }
    
    const options ={
