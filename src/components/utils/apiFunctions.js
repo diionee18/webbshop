@@ -98,6 +98,7 @@ export async function updateProduct(productName,productPrice,productInfo,product
 		shopid: shopId,
         productid: productId
 	}
+    
 	const options = {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
@@ -136,7 +137,7 @@ export async function uploadProduct(productName, productPrice, productInfo, prod
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
    
-	if( statusObject.stats === 'success' ) {
+	if( statusObject.status === 'success' ) {
 		return true
 	}
 	return false  
