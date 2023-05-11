@@ -1,4 +1,4 @@
-import { products, idValue } from "../../utils/getAtom";
+import { products, idValue, logdin  } from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { getProducts, deleteProduct } from "../../utils/apiFunctions.js";
@@ -9,6 +9,7 @@ import "./ProductsAdmin.css";
 function ProductsAdmin() {
     const [productsState, setProductsState] = useRecoilState(products);
     const [targetId, setTargetId] = useRecoilState(idValue);
+    const [islogdin, setLogdin] = useRecoilState(logdin)
 
     const removeProduct = async (productId) => {
         const result = await deleteProduct(productId);
@@ -33,6 +34,7 @@ function ProductsAdmin() {
 
     return (
         <>
+        { islogdin ? <>
             <div className="add-prod-btn-div">
                 <NavLink
                     className="add-btn btn"
@@ -86,9 +88,13 @@ function ProductsAdmin() {
                         </li>
                     </div>
                 ))}
-            </div>
+            </div> </>
+            : null
+            }
         </>
+    
     );
+
 }
 
 export default ProductsAdmin;

@@ -27,7 +27,7 @@ const HeaderAdmin = () => {
                 </div>
 
                 <div>
-                    <button className="logout-button btn" onClick={logOut}><NavLink to={'/'}>Logga ut</NavLink></button>
+                    <button className="logout-button btn" onClick={logOut}><NavLink to={''}>Logga ut</NavLink></button>
                 </div>
             </div>
         </>

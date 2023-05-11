@@ -20,5 +20,9 @@ const idValue = atom({
     key: 'idValue',
     default:'',
 })
+const selectedProductsState = atom({
+    key: 'selectedProducts',
+    default: [],
+  });
 
-export {products, users, logdin, clicked, idValue} 
+export {products, users, logdin, clicked, idValue, selectedProductsState} 

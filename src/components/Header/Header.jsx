@@ -33,8 +33,7 @@ const Header = () => {
                 <div className={isOpen ? "val" : "val-off"}>
                     <nav className="nav-mobile">
                         <NavLink to={"/products"}> Lek & Spel </NavLink>
-                        <NavLink to={"barn"}> Barn </NavLink>
-                        <NavLink to={"Utvalt"}> Utvalt </NavLink>
+                        <NavLink to={"/about"}> Om Oss </NavLink>
                     </nav>
                     {/* <FontAwesomeIcon  className="searchbar" icon={faMagnifyingGlass} /> */}
                     <input
@@ -69,8 +68,9 @@ const Header = () => {
                 <div className="nav-div-desktop">
                     <nav className="nav-desktop">
                         <NavLink to={"products"}> Lek & Spel </NavLink>
-                        <NavLink to={"barn"}> Barn </NavLink>
-                        <NavLink to={"Utvalt"}> Utvalt </NavLink>
+                        <NavLink to={"/"}> Sommar Erbjudande
+                    </NavLink> 
+                        <NavLink to={"/about"}> Om Oss </NavLink>
                     </nav>
 
                     <input

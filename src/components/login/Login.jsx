@@ -39,7 +39,8 @@ const Login = () => {
                 e.preventDefault()
                 return;
             }else if (user.username.toLowerCase() != inputUserName.toLowerCase()) {
-
+                e.preventDefault()
+                
             }
             
         })
