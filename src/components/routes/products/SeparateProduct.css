@@ -1,0 +1,51 @@
+.separate-info{
+    padding: .5em;
+}
+
+
+.img-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+hr{
+    border: 2px solid rgb(227, 225, 225);
+}
+
+.prod-name{
+    font-family: din pro,sans-serif ;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: .5em;
+
+}
+.prod-info{
+    font-family: din pro,sans-serif ;
+    font-size: 18px;
+    margin-bottom: .5em;
+    border: 2px solid rgba(128, 128, 128, 0.307);
+    padding: .5em;
+
+}
+
+.price-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2em;
+}
+.price-btn p{
+    font-size: 35px;
+    font-weight: bold;    
+}
+
+.price-btn button{
+    font-size: 22px;
+    color: white;
+    padding: .5em 3em; 
+    background: linear-gradient(128deg, rgb(128, 138, 14) 0%, rgb(68, 146, 80) 100%);
+    box-shadow: 9px 10px 12px rgba(154, 197, 157, 0.793);
+}
+

@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import "./getproduct.css";
 import { getProducts } from "../utils/apiFunctions.js";
+import { NavLink } from "react-router-dom";
 
 function ShowProducts() {
     const [productsState, setProductsState] = useRecoilState(products);
@@ -20,6 +21,9 @@ function ShowProducts() {
         "Hopprep",
         "Återanvändbara Vattenbomber"
       ];
+      const handleAddToCart = (product) => {
+        setSelectedProducts([product]);
+      };
 
     useEffect(() => {
         async function fetchData() {
@@ -46,7 +50,7 @@ function ShowProducts() {
                         </div>
                     </li>
                         <div className="go-to-btn">
-                            <button>Gå till Produkt</button>
+                        <NavLink className="nav-btn" to={"/products/" + product.id} onClick={() => handleAddToCart(product)}  >  Gå till Produkt</NavLink>
                         </div>
                 </div>
             ))}
