@@ -42,19 +42,19 @@ export async function addUser() {
 	return false 
 }
 
-export async function deleteProduct(){
+export async function deleteProduct(productId){
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=delete-product";
    const shopId = 1002;
    
    const data = {
        shopid: shopId,
-       productid: 8835,
+       productid: {productId},
    }
    
    const options ={
-       method: "DELETE",
+       method: 'DELETE',
+       mode: "no-cors",
        headers: { 'Content-Type': 'application/json' },
-    //    headers: {'Content-Type': 'application/json', "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"},
        body: JSON.stringify(data)
    }
    console.log("Delete Product", url);

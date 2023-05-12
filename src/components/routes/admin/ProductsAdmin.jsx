@@ -16,7 +16,7 @@ function ProductsAdmin() {
         if (result) {
             console.log("Produkt är borttagen: " + productId);
         } else {
-            console.log(result);
+            console.log(result, productId);
         }
     };
     
@@ -78,11 +78,11 @@ function ProductsAdmin() {
                                     {" "}
                                     Ändra
                                 </NavLink>
-                                <button
+                                <button onClick={() => removeProduct(product.id)}
 
                                     className="remove-button btn"
                                 >
-                                    Ta bort{" "}
+                                    Ta bort
                                 </button>
                             </div>
                         </li>
