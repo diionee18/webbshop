@@ -4,17 +4,25 @@ import logo from "../../assets/Logo.png";
 import varukorg from "../../assets/varukorg.png";
 import login from "../../assets/login.png";
 import { Fade, Fade as Hamburger } from "hamburger-react";
-import { useState, useEffect } from "react";
+import { useState,} from "react";
 import Login from "../login/Login";
 import { useRecoilState } from "recoil";
-import { clicked } from "../utils/getAtom";
+import { clicked, searchState,isSearched  } from "../utils/getAtom";
 // import { FontAwesomeIcon  } from "@fortawesome/react-fontawesome";
 // import {  faMagnifyingGlass  } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
     const [isOpen, setOpen] = useState(false);
     const [isClicked, setClicked] = useRecoilState(clicked);
-    console.log(isOpen);
+    const [search, setSearchState] = useRecoilState(searchState);
+    const [isSearch, setisSearch] = useRecoilState(isSearched)
+    // console.log(isOpen);
 
+    const setSearch = (e) =>{
+        const inputValue = e.target.value.toLowerCase()
+        setSearchState(inputValue)
+        setisSearch(inputValue || false)
+        console.log(search);
+    }
 
     const handleclick = () => {
         setClicked(true);
@@ -37,6 +45,7 @@ const Header = () => {
                     </nav>
                     {/* <FontAwesomeIcon  className="searchbar" icon={faMagnifyingGlass} /> */}
                     <input
+                        onChange={setSearch}
                         type="text"
                         className="input-mobile"
                         placeholder="Sök en produkt"
@@ -74,6 +83,7 @@ const Header = () => {
                     </nav>
 
                     <input
+                        onChange={setSearch}
                         type="text"
                         className="input-desktop"
                         placeholder="Sök en produkt"

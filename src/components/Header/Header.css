@@ -90,7 +90,6 @@ hr{
     height: 50px;
 }
 /*Nav mobile slutar här*/
-
 .right{
     display: flex;
     gap: 1em;
@@ -105,6 +104,8 @@ hr{
 .nav-wrapper-desktop{
     display: none;
 }
+
+
 
 
 @media screen and (min-width: 580px) {
