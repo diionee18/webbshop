@@ -1,4 +1,4 @@
-import { products, isSearched } from "../utils/getAtom";
+import { products, isSearched, selectedProductsState } from "../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import "./getproduct.css";
@@ -9,6 +9,7 @@ import SearchedProducts from "./SearchedProducts";
 function ShowProducts() {
     const [productsState, setProductsState] = useRecoilState(products);
     const [isSearch] = useRecoilState(isSearched);
+    const [selectedProduct, setSelectedProducts] = useRecoilState(selectedProductsState);
 
     const sommarLeksakerNamn = [
         "Vattenpistol",

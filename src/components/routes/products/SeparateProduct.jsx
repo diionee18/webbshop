@@ -1,4 +1,8 @@
-import { selectedProductsState, products, cartState } from "../../utils/getAtom";
+import {
+    selectedProductsState,
+    products,
+    cartState,
+} from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -10,8 +14,7 @@ const SeparateProduct = () => {
     const [productsState] = useRecoilState(products);
     const [product, setProduct] = useState();
     const params = useParams();
-    const [productsInCart, setProductInCart] = useRecoilState(cartState)
-  
+    const [productsInCart, setProductInCart] = useRecoilState(cartState);
 
     useEffect(() => {
         console.log(productsState);
@@ -20,25 +23,31 @@ const SeparateProduct = () => {
         console.log(selectedProduct);
     }, [productsState]);
 
-
     const addProductToCart = (product) => {
-        const newProduct = {
+        const existingProduct = productsInCart.find((p) => p.id === product.id);
+        if (existingProduct) {
+          // Produkten finns redan i varukorgen, uppdatera kvantiteten
+          const updatedCart = productsInCart.map((p) =>
+            p.id === product.id ? { ...p, count: p.count + 1 } : p
+          );
+          setProductInCart(updatedCart);
+        } else {
+          // Produkten finns inte i varukorgen, lägg till den med kvantitet 1
+          const newProduct = {
             ...product,
-            count:1,
-        };
-        setProductInCart([
-            ...productsInCart,
-            newProduct,
-        ]);
-        ShoppingCart(product);
-    };
+            count: 1,
+          };
+          setProductInCart([...productsInCart, newProduct]);
+        }
+      };
+      
 
-
+   
 
     return (
         <>
             {product ? (
-                <div >
+                <div>
                     <li className="" key={product.id}>
                         <div className="img-div">
                             {<img src={product.picture} alt="" />}
@@ -51,8 +60,14 @@ const SeparateProduct = () => {
                             </div>
                             <div>
                                 <div className="price-btn">
-                                   <p> {product.price} Kr</p>
-                                    <button onClick={() => addProductToCart(product)}>Lägg i varukorg</button>
+                                    <p> {product.price} Kr</p>
+                                    <button
+                                        onClick={() =>
+                                            addProductToCart(product)
+                                        }
+                                    >
+                                        Lägg i varukorg
+                                    </button>
                                 </div>
                             </div>
                         </div>

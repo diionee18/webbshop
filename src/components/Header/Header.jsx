@@ -17,9 +17,9 @@ const Header = () => {
     const [isClicked, setClicked] = useRecoilState(clicked);
     const [search, setSearchState] = useRecoilState(searchState);
     const [isSearch, setisSearch] = useRecoilState(isSearched)
-    const [cart, setcartState] = useState(false)
-    const [productsInCart] = useRecoilState(cartState)
-    // console.log(isOpen);
+    const [cartsVisibility, setCartVisibility] = useState(false)
+
+    const [productsInCart, setProductInCart] = useRecoilState(cartState)
 
     const setSearch = (e) =>{
         const inputValue = e.target.value.toLowerCase()
@@ -32,10 +32,33 @@ const Header = () => {
         setClicked(true);
     }
     const handelCartState = () =>{
-        setcartState(cart === false ? true : false)
-        console.log(cart);
+
+        setCartVisibility(true)
     }
- 
+    const handelClose = () =>{
+        setCartVisibility(false)
+    }
+    const onQuantityChange = (productId, count) => {
+        setProductInCart((oldState) => {
+          const updatedCart = oldState.map((item) => {
+            if (item.id === productId) {
+              return { ...item, count: count };
+            }
+            return item;
+          });
+          return updatedCart;
+        });
+      };
+
+      const onProductRemove = (product) => {
+        setProductInCart((oldState) => {
+          const updatedCart = oldState.filter((item) => item.id !== product.id);
+          return updatedCart;
+        });
+      };
+      
+      
+      
     return (
         <>
             <div className="nav-wrapper-mobile">
@@ -62,8 +85,9 @@ const Header = () => {
                 </div>
 
                 <div className="right">
-                <button className="bag-btn">
+                <button className="bag-btn" onClick={handelCartState} >
                     <GiShoppingBag color="white" size={35}/>
+                    {productsInCart.length > 0 && <span className="product-count">{productsInCart.length}</span>}
                     </button>
 
                     <div className="hamburger">
@@ -104,6 +128,7 @@ const Header = () => {
                 <div className="right-desktop">
                     <button onClick={handelCartState} className="bag-btn">
                     <GiShoppingBag color="white" size={35}/>
+                    {productsInCart.length > 0 && <span className="product-count">{productsInCart.length}</span>}
                     </button>
 
                     <button onClick={handleclick} className="login-btn"> <img className="login-desktop" src={login} alt="" /> </button>
@@ -112,9 +137,13 @@ const Header = () => {
             {isClicked? 
             <Login/>:
             null}
-            {cart ? <ShoppingCart
+            <ShoppingCart
             products={productsInCart}
-            /> : null}
+            visibility={cartsVisibility}
+            onClose={handelClose}
+            onQuantityChange={onQuantityChange}
+            onProductRemove={onProductRemove}
+            />
         </>
     );
 };
