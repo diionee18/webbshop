@@ -1,17 +1,17 @@
-import { selectedProductsState, products } from "../../utils/getAtom";
+import { selectedProductsState, products, cartState } from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./SeparateProduct.css";
+import ShoppingCart from "../../products/ShoppingCart";
 
 const SeparateProduct = () => {
     //const [selectedProducts] = useRecoilState(selectedProductsState);
     const [productsState] = useRecoilState(products);
     const [product, setProduct] = useState();
     const params = useParams();
-    const addToCart = () =>{
-        set
-    }
+    const [productsInCart, setProductInCart] = useRecoilState(cartState)
+  
 
     useEffect(() => {
         console.log(productsState);
@@ -19,6 +19,21 @@ const SeparateProduct = () => {
         setProduct(selectedProduct);
         console.log(selectedProduct);
     }, [productsState]);
+
+
+    const addProductToCart = (product) => {
+        const newProduct = {
+            ...product,
+            count:1,
+        };
+        setProductInCart([
+            ...productsInCart,
+            newProduct,
+        ]);
+        ShoppingCart(product);
+    };
+
+
 
     return (
         <>
@@ -37,7 +52,7 @@ const SeparateProduct = () => {
                             <div>
                                 <div className="price-btn">
                                    <p> {product.price} Kr</p>
-                                    <button>Lägg i varukorg</button>
+                                    <button onClick={() => addProductToCart(product)}>Lägg i varukorg</button>
                                 </div>
                             </div>
                         </div>

@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/Logo.png";
-import varukorg from "../../assets/varukorg.png";
 import login from "../../assets/login.png";
 import { Fade, Fade as Hamburger } from "hamburger-react";
 import { useState,} from "react";
 import Login from "../login/Login";
 import { useRecoilState } from "recoil";
-import { clicked, searchState,isSearched, } from "../utils/getAtom";
+import { clicked, searchState,isSearched, cartState, } from "../utils/getAtom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCart from "../products/ShoppingCart";
 import {GiShoppingBag} from "react-icons/gi"
@@ -19,6 +18,7 @@ const Header = () => {
     const [search, setSearchState] = useRecoilState(searchState);
     const [isSearch, setisSearch] = useRecoilState(isSearched)
     const [cart, setcartState] = useState(false)
+    const [productsInCart] = useRecoilState(cartState)
     // console.log(isOpen);
 
     const setSearch = (e) =>{
@@ -112,7 +112,9 @@ const Header = () => {
             {isClicked? 
             <Login/>:
             null}
-            {cart ? <ShoppingCart/> : null}
+            {cart ? <ShoppingCart
+            products={productsInCart}
+            /> : null}
         </>
     );
 };
