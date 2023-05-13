@@ -26,13 +26,12 @@ const SeparateProduct = () => {
     const addProductToCart = (product) => {
         const existingProduct = productsInCart.find((p) => p.id === product.id);
         if (existingProduct) {
-          // Produkten finns redan i varukorgen, uppdatera kvantiteten
           const updatedCart = productsInCart.map((p) =>
             p.id === product.id ? { ...p, count: p.count + 1 } : p
           );
           setProductInCart(updatedCart);
         } else {
-          // Produkten finns inte i varukorgen, lägg till den med kvantitet 1
+
           const newProduct = {
             ...product,
             count: 1,
