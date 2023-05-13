@@ -9,7 +9,9 @@ const SeparateProduct = () => {
     const [productsState] = useRecoilState(products);
     const [product, setProduct] = useState();
     const params = useParams();
-    console.log(params.id);
+    const addToCart = () =>{
+        set
+    }
 
     useEffect(() => {
         console.log(productsState);

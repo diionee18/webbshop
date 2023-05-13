@@ -105,6 +105,17 @@ hr{
     display: none;
 }
 
+.bag-btn{
+    align-items: center;
+    align-self: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+.bag-btn:hover{
+    transform: scale(0.8);
+}
 
 
 
@@ -168,7 +179,7 @@ hr{
     
     .right-desktop{
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         /* gap: 1em; */
     }
     .input-desktop{
@@ -182,15 +193,12 @@ hr{
         
     }
     .login-desktop{
-        align-self: center;
-        width: 45px;
-        height: 45px;
-    }
-    .varukorg-img-desktop{
-        
-        width: 25px;
+        align-items: flex-end;
+        align-self: flex-end;
+        width: 40px;
         height: 40px;
     }
+
     .login-btn{
         border: none;
         background: none;

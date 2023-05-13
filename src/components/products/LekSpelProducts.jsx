@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { products, selectedProductsState } from "../utils/getAtom";
+import { products, selectedProductsState, isSearched } from "../utils/getAtom";
 import { useRecoilState } from "recoil";
+import SearchedProducts from "./SearchedProducts";
 
 const LekSpel = () =>{
     const [productsState] = useRecoilState(products);
-    const [selectedProducts, setSelectedProducts] = useRecoilState(selectedProductsState);
+    const [selectedProducts, setSelectedProducts] = useRecoilState
+    (selectedProductsState);
         const leksakerNamn = [
             "Kortlek",
             "Hopprep",
@@ -21,6 +23,7 @@ const LekSpel = () =>{
             "KanJam Frisbee-spel",
             "Tactic Fotbollskrocket"
       ];
+      const [isSearch] = useRecoilState(isSearched);
 
       const handleAddToCart = (product) => {
         setSelectedProducts([product]);
@@ -28,7 +31,10 @@ const LekSpel = () =>{
 
 
     return(
-         <div className="product-wrapper">
+        <>
+        { isSearch ? <SearchedProducts/> :
+
+            <div className="product-wrapper">
             {productsState.filter((product) => leksakerNamn.includes(product.name)).map((product) => (
                 <div className="product-div" key={product.id}>
                     <li className="product-li">
@@ -45,6 +51,8 @@ const LekSpel = () =>{
                 </div>
             ))}
         </div>
+        }
+            </>
 
     )
 }

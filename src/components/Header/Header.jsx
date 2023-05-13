@@ -7,7 +7,10 @@ import { Fade, Fade as Hamburger } from "hamburger-react";
 import { useState,} from "react";
 import Login from "../login/Login";
 import { useRecoilState } from "recoil";
-import { clicked, searchState,isSearched  } from "../utils/getAtom";
+import { clicked, searchState,isSearched, } from "../utils/getAtom";
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import ShoppingCart from "../products/ShoppingCart";
+import {GiShoppingBag} from "react-icons/gi"
 // import { FontAwesomeIcon  } from "@fortawesome/react-fontawesome";
 // import {  faMagnifyingGlass  } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
@@ -15,6 +18,7 @@ const Header = () => {
     const [isClicked, setClicked] = useRecoilState(clicked);
     const [search, setSearchState] = useRecoilState(searchState);
     const [isSearch, setisSearch] = useRecoilState(isSearched)
+    const [cart, setcartState] = useState(false)
     // console.log(isOpen);
 
     const setSearch = (e) =>{
@@ -26,6 +30,10 @@ const Header = () => {
 
     const handleclick = () => {
         setClicked(true);
+    }
+    const handelCartState = () =>{
+        setcartState(cart === false ? true : false)
+        console.log(cart);
     }
  
     return (
@@ -54,7 +62,10 @@ const Header = () => {
                 </div>
 
                 <div className="right">
-                    <img className="varukorg-img" src={varukorg} alt="" />
+                <button className="bag-btn">
+                    <GiShoppingBag color="white" size={35}/>
+                    </button>
+
                     <div className="hamburger">
                         <Fade
                             color="white"
@@ -91,19 +102,17 @@ const Header = () => {
                 </div>
 
                 <div className="right-desktop">
-                    <img
-                        className="varukorg-img-desktop"
-                        src={varukorg}
-                        alt=""
-                    />
+                    <button onClick={handelCartState} className="bag-btn">
+                    <GiShoppingBag color="white" size={35}/>
+                    </button>
+
                     <button onClick={handleclick} className="login-btn"> <img className="login-desktop" src={login} alt="" /> </button>
                 </div>
             </div>
             {isClicked? 
             <Login/>:
-            null
-            
-        }
+            null}
+            {cart ? <ShoppingCart/> : null}
         </>
     );
 };

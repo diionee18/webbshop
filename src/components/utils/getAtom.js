@@ -32,5 +32,9 @@ const isSearched = atom({
     key: 'isSearched',
     default: false,
   });
+const cartState = atom({
+    key: 'cartState',
+    default: [],
+  });
 
-export {products, users, logdin, clicked, idValue, selectedProductsState, searchState, isSearched} 
+export {products, users, logdin, clicked, idValue, selectedProductsState, searchState, isSearched, cartState} 
