@@ -46,7 +46,6 @@ const AddProduct = () => {
                 
                 if (result) {
                     setProductAdded(true);
-                    console.log("allt gick bra");
                     setAddError(false)
                 } else {
                 setAddError(true);

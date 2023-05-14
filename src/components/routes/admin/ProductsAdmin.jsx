@@ -15,9 +15,8 @@ function ProductsAdmin() {
         const result =  deleteProduct(productId);
         if (result) {
             return
-            console.log("Produkt är borttagen: " + productId);
+
         } else {
-            console.log(result, productId);
         }
     };
     

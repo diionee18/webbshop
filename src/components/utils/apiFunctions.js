@@ -11,7 +11,7 @@ export async function getUsers() {
         return data;
       
     } catch (error) {
-        console.log("Use console.log to find out what the error is.");
+       
     }
    
     return null;
@@ -56,7 +56,7 @@ export async function deleteuser(userId){
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(data)
    }
-   console.log("Delete Product", url);
+   
    const response = await fetch(url, options)
    const statusObject = await response.json()
    
@@ -81,10 +81,10 @@ export async function userCredentials(userName, password) {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
 	}
-    console.log(data);
+   
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
-    console.log(statusObject);
+  
     
 	if( statusObject.status === 'success' ) {
 		return true
@@ -106,7 +106,7 @@ export async function deleteProduct(productId){
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(data)
    }
-   console.log("Delete Product", url);
+  
    const response = await fetch(url, options)
    const statusObject = await response.json()
  
@@ -126,7 +126,7 @@ export async function getProducts() {
 
         return data;
     } catch (error) {
-        console.log("Use console.log to find out what the error is.");
+       
     }
     return null;
 }
@@ -155,7 +155,7 @@ export async function updateProduct(productName,productPrice,productInfo,product
 	}
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
-    console.log(statusObject);
+
    
 
 	if( statusObject.status === 'success' ) {
@@ -183,7 +183,7 @@ export async function uploadProduct(productName, productPrice, productInfo, prod
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
 	}
-    console.log(productImg);
+   
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
    

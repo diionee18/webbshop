@@ -48,7 +48,6 @@ const EditProduct = () => {
             );
 
             if (result) {
-                console.log("allt gick bra");
                 setErrorEdit(false);
             } else {
                 setErrorEdit(true);

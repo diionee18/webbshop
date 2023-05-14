@@ -17,10 +17,8 @@ const SeparateProduct = () => {
     const [productsInCart, setProductInCart] = useRecoilState(cartState);
 
     useEffect(() => {
-        console.log(productsState);
         let selectedProduct = productsState.find((p) => p.id == params.id);
         setProduct(selectedProduct);
-        console.log(selectedProduct);
     }, [productsState]);
 
     const addProductToCart = (product) => {
