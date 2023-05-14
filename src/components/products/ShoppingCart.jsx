@@ -2,6 +2,15 @@ import "./ShoppingCart.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
+const getTotalPrice = (products) => {
+    let totalPrice = 0;
+    products.forEach((product) => {
+      totalPrice += product.price * product.count;
+    });
+    return totalPrice.toFixed(2);
+  };
+  
+
 function ShoppingCart({
     visibility,
     products,
@@ -37,7 +46,7 @@ function ShoppingCart({
                                 <div className="produkt-cart-info">
                                     <h3>{product.name}</h3>
                                     <span className="produkt-cart-price">
-                                        {product.price * product.count} Kr
+                                        {(product.price * product.count).toFixed(2)} Kr
                                     </span>
                                 </div>
 
@@ -51,7 +60,7 @@ function ShoppingCart({
                                         )
                                     }
                                 >
-                                    {[...Array(10).keys()].map((number) => {
+                                    {[...Array(50).keys()].map((number) => {
                                         const num = number + 1;
                                         return (
                                             <option value={num} key={num}>
@@ -72,6 +81,7 @@ function ShoppingCart({
                         {products.length > 0 && (
                             <div className="checkout-div">
 
+                                <h2>Totalt: {getTotalPrice(products)} Kr</h2>
                             <button className="checkout-btn"> Kassa </button>
                             </div>
                             )}

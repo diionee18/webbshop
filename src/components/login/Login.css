@@ -49,3 +49,30 @@
     color: white;
     text-align: center;
 }
+
+.cred-error{
+    margin-top: .5em;
+    border: 2px solid rgba(170, 170, 170, 0.673);
+    padding: 1em .5em;
+    background-color:#edcccc ;
+    border-radius: 10px;
+}
+
+.cred-error p {
+    text-align: start;
+    width: 400px;
+    font-size: 20px;
+    color: rgb(165, 0, 0);
+
+}
+
+.login-btnn{
+    font-size: 22px;
+    color: white;
+    padding: .5em 3em; 
+    background: linear-gradient(128deg, rgb(128, 138, 14) 0%, rgb(68, 146, 80) 100%);
+    box-shadow: 9px 10px 12px rgba(154, 197, 157, 0.793);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

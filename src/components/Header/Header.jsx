@@ -87,7 +87,6 @@ const Header = () => {
                 <div className="right">
                 <button className="bag-btn" onClick={handelCartState} >
                     <GiShoppingBag color="white" size={35}/>
-                    {productsInCart.length > 0 && <span className="product-count">{productsInCart.length}</span>}
                     </button>
 
                     <div className="hamburger">
@@ -128,7 +127,6 @@ const Header = () => {
                 <div className="right-desktop">
                     <button onClick={handelCartState} className="bag-btn">
                     <GiShoppingBag color="white" size={35}/>
-                    {productsInCart.length > 0 && <span className="product-count">{productsInCart.length}</span>}
                     </button>
 
                     <button onClick={handleclick} className="login-btn"> <img className="login-desktop" src={login} alt="" /> </button>

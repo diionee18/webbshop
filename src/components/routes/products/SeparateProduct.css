@@ -47,5 +47,11 @@ hr{
     padding: .5em 3em; 
     background: linear-gradient(128deg, rgb(128, 138, 14) 0%, rgb(68, 146, 80) 100%);
     box-shadow: 9px 10px 12px rgba(154, 197, 157, 0.793);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+li{
+    list-style-type: none;
 }
 
