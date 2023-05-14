@@ -1,11 +1,21 @@
 import { users } from "../utils/getAtom.js";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
-import { getUsers } from "../utils/apiFunctions.js";
+import { deleteuser, getUsers } from "../utils/apiFunctions.js";
 import "./Users.css"
 
 const Users = () => {
     const [userstate, setUserState] = useRecoilState(users);
+
+    const removeUser = async (userId) =>{
+        const response = await deleteuser(userId)
+        console.log(userId);
+        if (response){
+            console.log("if", response);
+        }else{
+            console.log("else:", response);
+        }
+    }
 
     useEffect(() => {
         async function fetchUsers() {
@@ -16,7 +26,7 @@ const Users = () => {
         }
         fetchUsers();
     }, [setUserState]);
-    console.log(userstate);
+
     return (
         <>
             <div className="users-Wrapper">
@@ -25,7 +35,7 @@ const Users = () => {
                 {userstate.map((user) =>(
                     <li><span>Användarnamn: </span>{user.username} <br />
                    <span> AnvändarId: </span> {user.id} <br />
-                   <button className="admin-button">Ta bort</button>
+                   <button onClick={() => removeUser(user.id)} className="admin-button">Ta bort</button>
                     </li>
                 ))}
                 </div>

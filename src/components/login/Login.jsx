@@ -61,15 +61,6 @@ const Login = () => {
       
           setLoading(false);
         };
-               
-            
-       
-        
-       
-            
-        
-
-    
 
 
     

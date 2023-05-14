@@ -41,6 +41,32 @@ export async function addUser() {
 	}
 	return false 
 }
+
+export async function deleteuser(userId){
+    const url = "http://www.forverkliga.se/JavaScript/api/fe/?action=";
+   const shopId = 1002;
+   
+   const data = {
+       shopid: shopId,
+       userid: userId,
+   }
+   
+   const options ={
+       method: 'DELETE',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+   }
+   console.log("Delete Product", url);
+   const response = await fetch(url, options)
+   const statusObject = await response.json()
+   
+   if (statusObject.status === "success"){
+       return true
+    }
+          
+   return false
+}
+
 export async function userCredentials(userName, password) {
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=login-user";
     const shopId = 1002;
