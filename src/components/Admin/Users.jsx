@@ -7,15 +7,6 @@ import "./Users.css"
 const Users = () => {
     const [userstate, setUserState] = useRecoilState(users);
 
-    const removeUser = async (userId) =>{
-        const response = await deleteuser(userId)
-        console.log(userId);
-        if (response){
-            console.log("if", response);
-        }else{
-            console.log("else:", response);
-        }
-    }
 
     useEffect(() => {
         async function fetchUsers() {
@@ -35,7 +26,6 @@ const Users = () => {
                 {userstate.map((user) =>(
                     <li><span>Användarnamn: </span>{user.username} <br />
                    <span> AnvändarId: </span> {user.id} <br />
-                   <button onClick={() => removeUser(user.id)} className="admin-button">Ta bort</button>
                     </li>
                 ))}
                 </div>

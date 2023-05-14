@@ -25,7 +25,6 @@ const Header = () => {
         const inputValue = e.target.value.toLowerCase()
         setSearchState(inputValue)
         setisSearch(inputValue || false)
-        console.log(search);
     }
 
     const handleclick = () => {

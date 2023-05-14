@@ -11,8 +11,8 @@ const AddProduct = () => {
     const [productInfo, setProductInfo] = useState();
     const [productImg, setProductImg] = useState();
     const [productAdded, setProductAdded] = useState(false);
-
-    const [errorEdit, setErrorEdit] = useState(false)
+    const [priceError, setPriceError] = useState(false);
+    const [addError, setAddError] = useState(false)
 
 
     const handleName = (e) => {
@@ -20,6 +20,12 @@ const AddProduct = () => {
     };
     const handlePrice = (e) => {
         setProductPrice(e.target.value);
+        const hasLetters = /[a-zA-Z]/.test(e.target.value);
+        if (hasLetters) {
+          setPriceError(true)
+        }else{
+            setPriceError(false)
+        }
     };
     const handleInfo = (e) => {
         setProductInfo(e.target.value );
@@ -36,14 +42,15 @@ const AddProduct = () => {
             setProductAdded(true)
             console.log("allt gick bra");
         } else{
-            setErrorEdit(true)
-            console.log("något gick fel", result);
+            setAddError(true)
+            
         }
         
     };
     return (
         <div className="div-wrapper">
-            <form action="submit" className="input-wrapper">
+            <div className="input-wrapper">
+            <form onSubmit={handleclick} className="edit-form">
                 
 
                 <div className="label-div">
@@ -52,9 +59,17 @@ const AddProduct = () => {
                 </div>
 
                 <div className="label-div">
-                    <label htmlFor="price">Pris</label>
-                    <input className="input" required onBlur={handlePrice} name="price" type="text" />
-                </div>
+                        <label htmlFor="price">Pris</label>
+                        {priceError && <span className="price-span">Kontrollera att du endast har siffror</span> }
+                        <input
+                        placeholder={productPrice}
+                            className="input"
+                            required
+                            onBlur={handlePrice}
+                            name="price"
+                            type="text"
+                        />
+                    </div>
 
 
                 <div className="label-div">
@@ -67,11 +82,16 @@ const AddProduct = () => {
                     <textarea required onBlur={handleInfo} name="beskrivning" type="text" />
                 </div>
 
-                <button  onClick={handleclick} className="uppdatera-btn">
+                <button type="submit" className="uppdatera-btn">
                     Lägg till Produkt
                 </button>
                 
             </form>
+            </div>
+
+            {addError && <div>
+                <p>Kunde inte ladda upp produkten, kontrollera att du fyllt i alla rutor.</p>
+                </div>}
             {
                 productAdded &&
             <ProductAdded/>
