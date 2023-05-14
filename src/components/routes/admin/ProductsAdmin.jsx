@@ -14,7 +14,6 @@ function ProductsAdmin() {
     const removeProduct = (productId) => {
         const result =  deleteProduct(productId);
         if (result) {
-            return
 
         } else {
         }
