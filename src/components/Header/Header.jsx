@@ -71,7 +71,8 @@ const Header = () => {
                 <div className={isOpen ? "val" : "val-off"}>
                     <nav className="nav-mobile">
                         <NavLink to={"/products"}> Lek & Spel </NavLink>
-                        <NavLink to={"/about"}> Om Oss </NavLink>
+                        <NavLink to={"/"}> Sommar Erbjudande
+                    </NavLink> 
                     </nav>
                     {/* <FontAwesomeIcon  className="searchbar" icon={faMagnifyingGlass} /> */}
                     <input
@@ -112,7 +113,6 @@ const Header = () => {
                         <NavLink to={"products"}> Lek & Spel </NavLink>
                         <NavLink to={"/"}> Sommar Erbjudande
                     </NavLink> 
-                        <NavLink to={"/about"}> Om Oss </NavLink>
                     </nav>
 
                     <input

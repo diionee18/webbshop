@@ -39,7 +39,7 @@ select{
     font-weight: bold;
 }
 
-@media screen and (min-width: 580px) {
+@media screen and (min-width: 704px) {
     .bg-main{
         width: 80%;
         height: 50vh;
