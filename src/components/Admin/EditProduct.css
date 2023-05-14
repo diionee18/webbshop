@@ -48,7 +48,7 @@ font-size: 24px;
     margin-top: 1em;
 }
 
-.price-span{
+.price-span, .add-error{
     font-size: 18px;
     color: rgb(165, 0, 0);
     background-color:#edcccc ;

@@ -98,12 +98,11 @@ export async function deleteProduct(productId){
    
    const data = {
        shopid: shopId,
-       productid: {productId},
+       productid: 10264,
    }
    
    const options ={
        method: 'DELETE',
-       mode: "no-cors",
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(data)
    }

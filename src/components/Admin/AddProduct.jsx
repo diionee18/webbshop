@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import "./EditProduct.css";
-import { uploadProduct} from "../utils/apiFunctions.js";
+import { uploadProduct } from "../utils/apiFunctions.js";
 import ProductAdded from "./ProductAdded";
-
-
 
 const AddProduct = () => {
     const [productName, setProductName] = useState();
@@ -12,8 +10,8 @@ const AddProduct = () => {
     const [productImg, setProductImg] = useState();
     const [productAdded, setProductAdded] = useState(false);
     const [priceError, setPriceError] = useState(false);
-    const [addError, setAddError] = useState(false)
-
+    const [addError, setAddError] = useState(false);
+    const [isLoading, setLoading] = useState(false);
 
     const handleName = (e) => {
         setProductName(e.target.value);
@@ -22,47 +20,68 @@ const AddProduct = () => {
         setProductPrice(e.target.value);
         const hasLetters = /[a-zA-Z]/.test(e.target.value);
         if (hasLetters) {
-          setPriceError(true)
-        }else{
-            setPriceError(false)
+            setPriceError(true);
+        } else {
+            setPriceError(false);
         }
     };
     const handleInfo = (e) => {
-        setProductInfo(e.target.value );
+        setProductInfo(e.target.value);
     };
     const handleImg = (e) => {
         setProductImg(e.target.value);
     };
 
-    
     const handleclick = async (e) => {
-        e.preventDefault()
-        const result = await uploadProduct(productName, productPrice, productInfo, productImg);     
-        if(result){
-            setProductAdded(true)
-            console.log("allt gick bra");
-        } else{
-            setAddError(true)
+        e.preventDefault();
+        setLoading(true);
+        setAddError(false)
+        try {
+            const result = await uploadProduct(
+                productName,
+                productPrice,
+                productInfo,
+                productImg
+                );
+                
+                if (result) {
+                    setProductAdded(true);
+                    console.log("allt gick bra");
+                    setAddError(false)
+                } else {
+                setAddError(true);
+                
+            }
+        } catch (error) {
+            setAddError(true);
             
         }
-        
+        setLoading(false);
     };
     return (
         <div className="div-wrapper">
             <div className="input-wrapper">
-            <form onSubmit={handleclick} className="edit-form">
-                
-
-                <div className="label-div">
-                    <label htmlFor="name">ProduktNamn</label>
-                    <input className="input" required onBlur={handleName} name="name" type="text" />
-                </div>
-
-                <div className="label-div">
-                        <label htmlFor="price">Pris</label>
-                        {priceError && <span className="price-span">Kontrollera att du endast har siffror</span> }
+                <form onSubmit={handleclick} className="edit-form">
+                    <div className="label-div">
+                        <label htmlFor="name">ProduktNamn</label>
                         <input
-                        placeholder={productPrice}
+                            className="input"
+                            required
+                            onBlur={handleName}
+                            name="name"
+                            type="text"
+                        />
+                    </div>
+
+                    <div className="label-div">
+                        <label htmlFor="price">Pris</label>
+                        {priceError && (
+                            <span className="price-span">
+                                Kontrollera att du endast har siffror
+                            </span>
+                        )}
+                        <input
+                            placeholder={productPrice}
                             className="input"
                             required
                             onBlur={handlePrice}
@@ -71,31 +90,41 @@ const AddProduct = () => {
                         />
                     </div>
 
+                    <div className="label-div">
+                        <label htmlFor="bild">Bild (Klistra in en url)</label>
+                        <input
+                            className="input"
+                            required
+                            onBlur={handleImg}
+                            name="bild"
+                            type="text"
+                        />
+                    </div>
 
-                <div className="label-div">
-                    <label htmlFor="bild">Bild (Klistra in en url)</label>
-                    <input className="input" required onBlur={handleImg} name="bild" type="text" />
-                </div>
+                    <div className="label-div">
+                        <label htmlFor="beskrivning">Beskrivning</label>
+                        <textarea
+                            required
+                            onBlur={handleInfo}
+                            name="beskrivning"
+                            type="text"
+                        />
+                    </div>
+                    {addError && (
+                        <div className="add-error">
+                            <p>
+                                Kunde inte ladda upp produkten, kontrollera att
+                                du fyllt i alla rutor.
+                            </p>
+                        </div>
+                    )}
 
-                <div className="label-div">
-                    <label htmlFor="beskrivning">Beskrivning</label>
-                    <textarea required onBlur={handleInfo} name="beskrivning" type="text" />
-                </div>
-
-                <button type="submit" className="uppdatera-btn">
-                    Lägg till Produkt
-                </button>
-                
-            </form>
+                    <button type="submit" className="uppdatera-btn">
+                        { isLoading ? "Laddar..." : "Lägg till Produkt"}
+                    </button>
+                </form>
             </div>
-
-            {addError && <div>
-                <p>Kunde inte ladda upp produkten, kontrollera att du fyllt i alla rutor.</p>
-                </div>}
-            {
-                productAdded &&
-            <ProductAdded/>
-            }
+            {productAdded && <ProductAdded />}
         </div>
     );
 };

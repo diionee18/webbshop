@@ -49,6 +49,7 @@ const EditProduct = () => {
 
             if (result) {
                 console.log("allt gick bra");
+                setErrorEdit(false);
             } else {
                 setErrorEdit(true);
             }
@@ -117,6 +118,16 @@ const EditProduct = () => {
                             type="text"
                         />
                     </div>
+
+                    {errorEdit && (
+                        <div className="add-error">
+                            <p>
+                                Kunde inte uppdatera produkten, kontrollera att
+                                du fyllt i alla rutor.
+                            </p>
+                        </div>
+                    )}
+
                     <div className="submit-btn">
                         <button type="submit" className="uppdatera-btn">
                             {isLoading ? "Laddar..." : "Uppdatera"}
