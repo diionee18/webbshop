@@ -18,15 +18,15 @@ export async function getUsers() {
 }
 
 
-export async function addUser() {
+export async function addUser( username, password) {
     
     const url = "https://www.forverkliga.se/JavaScript/api/fe/?action=add-user";
     const shopId = 1002;
 	
     const data = {
 		shopid: shopId,
-        username:"David",
-        password:"david123"
+        username:username,
+        password:password
 	}
 	const options = {
 		method: 'POST',
@@ -36,23 +36,24 @@ export async function addUser() {
 	const response = await fetch(url, options)
 	const statusObject = await response.json()
     
-	if( statusObject.stats === 'success' ) {
+	if( statusObject.status === 'success' ) {
 		return true
 	}
 	return false 
 }
 
-export async function deleteuser(userId){
-    const url = "http://www.forverkliga.se/JavaScript/api/fe/?action=";
+export async function deleteUser(userId){
+    const url = "http://www.forverkliga.se/JavaScript/api/fe/?action=delete-user";
    const shopId = 1002;
    
    const data = {
+    action:'delete-user',
        shopid: shopId,
        userid: userId,
    }
    
    const options ={
-       method: 'DELETE',
+       method: 'POST',
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(data)
    }
@@ -98,11 +99,11 @@ export async function deleteProduct(productId){
    
    const data = {
        shopid: shopId,
-       productid: 10264,
+       productid: productId,
    }
    
    const options ={
-       method: 'DELETE',
+       method: 'POST',
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(data)
    }

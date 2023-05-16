@@ -14,7 +14,7 @@ function ProductsAdmin() {
     const removeProduct = (productId) => {
         const result =  deleteProduct(productId);
         if (result) {
-
+            console.log("tog bort", productId);
         } else {
         }
     };
