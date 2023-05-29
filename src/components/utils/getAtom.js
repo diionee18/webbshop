@@ -36,5 +36,16 @@ const cartState = atom({
     key: 'cartState',
     default: [],
   });
+const productdetails = atom({
+    key: 'productdetails',
+    default: [
+        {
+            name: "" ,
+            price: null,
+            description: "",
+            picture: "",
+        }
+    ],
+  });
 
-export {products, users, logdin, clicked, idValue, selectedProductsState, searchState, isSearched, cartState} 
+export {products, users, logdin, clicked, idValue, selectedProductsState, searchState, isSearched, cartState, productdetails} 

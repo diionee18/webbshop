@@ -1,4 +1,4 @@
-import { products, idValue, logdin  } from "../../utils/getAtom";
+import { products, idValue, logdin, productdetails  } from "../../utils/getAtom";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { getProducts, deleteProduct } from "../../utils/apiFunctions.js";
@@ -9,7 +9,22 @@ import "./ProductsAdmin.css";
 function ProductsAdmin() {
     const [productsState, setProductsState] = useRecoilState(products);
     const [targetId, setTargetId] = useRecoilState(idValue);
+    const [targetInfo, setProductInfo] = useRecoilState(productdetails);
     const [islogdin, setLogdin] = useRecoilState(logdin)
+
+
+    const findProductInfo = (product) =>{
+        setProductInfo ({
+            name: product.name,
+            price: product.price,
+            picture: product.picture,
+            description: product.description
+        })
+
+        console.log(product.name);
+
+
+    }
 
     const removeProduct = (productId) => {
         const result =  deleteProduct(productId);
@@ -70,7 +85,7 @@ function ProductsAdmin() {
 
                             <div className="edit-remove-div">
                                 <NavLink
-                                    onClick={() => setTargetId(product.id)}
+                                    onClick={() => findProductInfo(product)}
                                     className="edit-button btn"
                                     to={"/admin/products/edit"}
                                 >
